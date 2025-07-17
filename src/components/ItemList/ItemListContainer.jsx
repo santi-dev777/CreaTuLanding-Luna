@@ -1,19 +1,16 @@
 import { useState, useEffect} from "react"
 import ItemList from "./ItemList"
 import { useParams } from "react-router"
+import {getItems, getItemsByCategory} from "../../firebase/db"
 
 function ItemListContainer() {
     const [items, setItems] = useState([])
     const {categoryName} = useParams()
-
+    
     useEffect(() => {
-
-        const url = categoryName ? 
-            `https://fakestoreapi.com/products/category/${categoryName}` : 
-            'https://fakestoreapi.com/products'
-        fetch(url)
-          .then(res => res.json())
-          .then(res =>setItems(res))
+        categoryName ? 
+            getItemsByCategory(categoryName).then(res => setItems(res)) : 
+            getItems().then(res => setItems(res))
     }, [categoryName])
 
     return (

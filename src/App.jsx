@@ -2,6 +2,8 @@ import NavBarContainer from "./components/NavBar/NavBarContainer";
 import ItemListContainer from "./components/ItemList/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router";
+import CartContainer from "./components/Cart/CartContainer";
+import CheckOut from "./components/CheckOut/Checkout";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path="/category/:categoryName" element={<ItemListContainer />} />
+        <Route path="/cart" element={<CartContainer />} />
+        <Route path="/checkout" element={<CheckOut />} />
       </Routes>
     </div>
     </BrowserRouter>

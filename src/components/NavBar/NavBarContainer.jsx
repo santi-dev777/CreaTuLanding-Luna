@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react"
 import NavBar from "./NavBar"
+import { getCategories } from "../../firebase/db"
 
 function NavBarContainer() {
     const [categories, setCategories] = useState([])
 
     useEffect(() => {
-        fetch('https://fakestoreapi.com/products/categories')
-            .then(res => res.json())
-            .then(res => setCategories(res))
-            .catch(err => console.log(err))
-
+        getCategories().then(res => setCategories(res))
+        
     }, [])
 
     return(

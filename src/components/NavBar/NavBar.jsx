@@ -3,7 +3,6 @@ import CartWidget from "./CartWidget";
 import { useNavigate } from "react-router";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 
-
 function NavBar({ categories }) {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -28,14 +27,14 @@ function NavBar({ categories }) {
               <ul className="absolute bg-white shadow-md rounded-md mt-2 p-2 z-10 w-40">
                 {categories.map((cat) => (
                   <li
-                    key={cat}
+                    key={cat.id}
                     className="px-4 py-2 text-gray-600 hover:text-black hover:bg-gray-100 cursor-pointer capitalize"
                     onClick={() => {
-                      navigate(`/category/${cat}`)
+                      navigate(`/category/${cat.name}`)
                       setOpen(false)
                     }}
                   >
-                    {cat}
+                    {cat.name}
                   </li>
                 ))}
               </ul>
