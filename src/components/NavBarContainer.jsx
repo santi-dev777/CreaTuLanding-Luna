@@ -7,7 +7,6 @@ function NavBarContainer() {
 
     useEffect(() => {
         getCategories().then(res => setCategories(res))
-        
     }, [])
 
     return(

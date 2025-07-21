@@ -46,9 +46,6 @@ function Checkout() {
         success: (orderId) => `Order created successfully. Your order ID is: ${orderId}`,
         error: "Failed to create order",
       });
-
-   
-    
   };
 
   return (

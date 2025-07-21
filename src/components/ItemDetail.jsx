@@ -7,7 +7,7 @@ function ItemDetail({product}) {
     const { addToCart } = useCart()
 
     return (
-        <div className="flex justify-center gap-10 border border-gray-300 mt-10 p-3">
+        <div className="flex justify-center gap-10 mt-10 p-3">
             <img className="max-h-[450px] object-cover self-center" src={product.image} alt="" />
             <div className="flex flex-col items-center max-w-[500px] gap-3 mt-10">
                 <h1 className="text-2xl text-white">{product.name}</h1>

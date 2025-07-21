@@ -16,7 +16,11 @@ function ItemListContainer() {
 
     return (
         <div className="flex flex-col items-center pt-5 gap-3">
-            <ItemList items={items} />
+            {items.length > 0 ? (
+                <ItemList items={items} />
+            ) : (
+                <h1 className="text-2xl text-white flex items-center justify-center">Loading...</h1>
+            )}
             
         </div>
     )
