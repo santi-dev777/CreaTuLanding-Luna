@@ -23,7 +23,7 @@ Este es un proyecto de tienda online hecho con **React**, que permite visualizar
 - [React Router DOM](https://reactrouter.com/)
 - [React Icons](https://www.npmjs.com/package/react-icons)
 - [Firebase Firestore](https://firebase.google.com/)
-- [Tailwind CSS](https://tailwindcss.com/) (opcional, si lo estás usando)
+- [Tailwind CSS](https://tailwindcss.com/)
 - JavaScript moderno (ES Modules)
 - Vite
 
