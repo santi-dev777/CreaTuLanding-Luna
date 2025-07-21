@@ -1,14 +1,17 @@
-import NavBarContainer from "./components/NavBar/NavBarContainer";
-import ItemListContainer from "./components/ItemList/ItemListContainer";
-import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
+import NavBarContainer from "./components/NavBarContainer";
+import ItemListContainer from "./components/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 import { BrowserRouter, Routes, Route } from "react-router";
-import CartContainer from "./components/Cart/CartContainer";
-import CheckOut from "./components/CheckOut/Checkout";
+import CartContainer from "./components/CartContainer";
+import CheckOut from "./components/Checkout";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <BrowserRouter>
     <div className="container mx-auto">
+      <div>
+        <Toaster position="top-center" toastOptions={{ duration: 5000 }} />
       <NavBarContainer />
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
@@ -17,6 +20,7 @@ function App() {
         <Route path="/cart" element={<CartContainer />} />
         <Route path="/checkout" element={<CheckOut />} />
       </Routes>
+      </div>
     </div>
     </BrowserRouter>
   )

@@ -1,12 +1,60 @@
-# React + Vite
+# 🛒 E-commerce React + Firebase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es un proyecto de tienda online hecho con **React**, que permite visualizar productos por categorías, agregarlos a un carrito y simular una compra. Toda la información de productos y órdenes se gestiona desde **Firebase Firestore**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## Expanding the ESLint configuration
+- Listado de productos desde Firestore
+- Filtrado por categorías
+- Detalle de producto
+- Agregar productos al carrito
+- Modificar cantidad de productos en el carrito
+- Eliminar productos o vaciar carrito
+- Finalizar compra con registro en Firebase
+- Confirmación visual de la compra y redirección a inicio
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Tecnologías
+
+- [React](https://react.dev/)
+- [React Router DOM](https://reactrouter.com/)
+- [Firebase Firestore](https://firebase.google.com/)
+- [Tailwind CSS](https://tailwindcss.com/) (opcional, si lo estás usando)
+- JavaScript moderno (ES Modules)
+- Vite (u otro bundler si lo usaste)
+
+---
+
+## 📁 Estructura del Proyecto
+```
+📦src
+┣ 📂components
+┣ 📂context
+┣ 📂firebase
+┣ 📂providers
+┣ 📜App.jsx
+┣ 📜index.css
+┗ 📜main.jsx
+```
+
+## Instalación
+
+1. Clonar el repositorio
+ ```
+ git clone https://github.com/usuario/repositorio.git 
+ ``` 
+
+2. Instalar dependencias:
+ ```
+ npm install 
+ ``` 
+
+3. ejecutar: 
+ ```
+ npm run dev 
+ ``` 
+
+### Autor: Santiago Luna

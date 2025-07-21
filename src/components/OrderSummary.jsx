@@ -1,12 +1,12 @@
-import { useCart } from "../../context/useCart"
+import { useCart } from "../context/useCart"
 import { useNavigate } from "react-router"
 
 function OrderSummary() {
     const { getTotal, getQuantity } = useCart()
     const navigate = useNavigate()
     return (
-        <div className="col-span-1 text-gray-600 mt-10">
-            <div className="bg-gray-100 p-6 rounded shadow-md h-fit">
+        <div className="col-span-1 text-white mt-10 ">
+            <div className="bg-gray-900 p-6 rounded shadow-md h-fit">
                 <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
                 <div className="flex justify-between mb-2">
                     <span>Items ({getQuantity()})</span>

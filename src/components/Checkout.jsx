@@ -1,10 +1,13 @@
 import { useState } from "react";
-import { useCart } from "../../context/useCart";
+import { useCart } from "../context/useCart";
 import {serverTimestamp} from "firebase/firestore"
-import {createOrder} from "../../firebase/db"
+import {createOrder} from "../firebase/db"
+import {toast} from "react-hot-toast"
+import {useNavigate} from "react-router"
 
 function Checkout() {
-  const {cart, getTotal} = useCart()
+  const {cart, getTotal, clearCart} = useCart()
+  const navigate = useNavigate()
   const [form, setForm] = useState({
     email: "",
     name: "",
@@ -21,7 +24,6 @@ function Checkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(form)
 
     const order = {
         user: {...form},
@@ -30,51 +32,66 @@ function Checkout() {
         date: serverTimestamp(),
       }
 
-    createOrder(order)
+    const create = async (order) => {
+      const id = await createOrder(order);
+      clearCart();
+      setForm({ email: "", name: "", phone: "" })
+      navigate("/");
+      return id;  
+    };
+    
+    toast.promise(
+      create(order), {
+        loading: "Creating order...",
+        success: (orderId) => `Order created successfully. Your order ID is: ${orderId}`,
+        error: "Failed to create order",
+      });
+
+   
     
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-white p-6 rounded shadow">
-      <h2 className="text-2xl font-semibold mb-4 text-center text-gray-700">
+    <div className="max-w-md mx-auto mt-10 p-6 rounded shadow bg-gray-900 text-white">
+      <h2 className="text-2xl font-semibold mb-4 text-center ">
         Checkout
       </h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <label className="flex flex-col">
-          <span className="text-gray-600 mb-1 ">Email</span>
+          <span className="mb-1 ">Email</span>
           <input
             type="email"
             name="email"
             value={form.email}
             onChange={handleChange}
             required
-            className="border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-600"
+            className="border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-white"
             placeholder="Enter your email"
           />
         </label>
 
         <label className="flex flex-col">
-          <span className="text-gray-600 mb-1">Name</span>
+          <span className="mb-1">Name</span>
           <input
             type="text"
             name="name"
             value={form.name}
             onChange={handleChange}
             required
-            className="border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-600"
+            className="border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-white"
             placeholder="Enter your name"
           />
         </label>
 
         <label className="flex flex-col">
-          <span className="text-gray-600 mb-1">Phone Number</span>
+          <span className="mb-1">Phone Number</span>
           <input
             type="tel"
             name="phone"
             value={form.phone}
             onChange={handleChange}
             required
-            className="border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-600"
+            className="border px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 text-white"
             placeholder="Enter your phone number"
           />
         </label>

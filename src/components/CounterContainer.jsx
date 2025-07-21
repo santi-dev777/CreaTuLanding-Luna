@@ -1,6 +1,7 @@
 import {useState} from "react"
 import Counter from "./Counter"
-import { useCart } from "../../context/useCart"
+import { useCart } from "../context/useCart"
+import {toast} from "react-hot-toast"
 
 function CounterContainer ({product}) {
     const [count, setCount] = useState(0)
@@ -14,12 +15,18 @@ function CounterContainer ({product}) {
         if (count > 0) setCount(count - 1)
     }
 
+    const handleAddToCart = (product, count) => {
+        addToCart(product, count)
+        toast.success(`${product.name} added to cart (${count})`)
+        setCount(0)
+    }
+
     return (
         <Counter 
             count={count} 
             handleAdd={handleAdd} 
             handleSubtract={handleSubtract} 
-            addToCart={addToCart} 
+            handleAddToCart={handleAddToCart} 
             product={product} 
         />
     )

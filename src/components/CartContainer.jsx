@@ -1,16 +1,16 @@
 import Cart from "./Cart"
-import { useCart } from "../../context/useCart"
+import { useCart } from "../context/useCart"
 import OrderSummary from "./OrderSummary"
 import { useNavigate } from "react-router"
 
 function CartContainer() {
-  const { cart } = useCart()
+  const { cart, clearCart } = useCart()
   const navigate = useNavigate()
 
   if(cart.length === 0) {
     return (
       <div className="flex items-center justify-center h-[60vh] flex-col">
-        <p className="text-2xl font-semibold text-gray-600">Your cart is empty</p>
+        <p className="text-2xl font-semibold text-white">Your cart is empty</p>
         <button className="mt-4 bg-blue-500 cursor-pointer hover:bg-blue-600 text-white w-full py-2 rounded max-w-[200px] self-center"
         onClick={() => navigate('/')}>View Products</button>
       </div>
@@ -21,8 +21,15 @@ function CartContainer() {
     <div className="grid grid-cols-3 gap-4 p-8">
 
       <div className="col-span-2">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-600">Shopping Cart</h2>
-        <div className="grid grid-cols-[2fr_1fr_1fr_1fr] text-gray-500 mb-2 font-medium border-b pb-2">
+        <div className="flex justify-between mb-4">
+          <h2 className="text-2xl font-semibold text-white">Shopping Cart</h2>
+          <button
+            onClick={clearCart}
+            className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded cursor-pointer max-w-[200px] self-center">
+            Clear Cart
+          </button>
+        </div>
+        <div className="grid grid-cols-[2fr_1fr_1fr_1fr] text-white mb-2 font-medium border-b pb-2">
           <p className="pl-2">Product</p>
           <p className="text-center">Price</p>
           <p className="text-center">Quantity</p>
@@ -35,7 +42,6 @@ function CartContainer() {
           ))}
         </div>
       </div>
-
       <OrderSummary />
     </div>
   )

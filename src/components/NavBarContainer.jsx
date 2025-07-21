@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import NavBar from "./NavBar"
-import { getCategories } from "../../firebase/db"
+import { getCategories } from "../firebase/db"
 
 function NavBarContainer() {
     const [categories, setCategories] = useState([])
