@@ -24,7 +24,7 @@ Este es un proyecto de tienda online hecho con **React**, que permite visualizar
 - [Firebase Firestore](https://firebase.google.com/)
 - [Tailwind CSS](https://tailwindcss.com/) (opcional, si lo estás usando)
 - JavaScript moderno (ES Modules)
-- Vite (u otro bundler si lo usaste)
+- Vite
 
 ---
 
